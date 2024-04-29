@@ -28,11 +28,12 @@ pool
         cover_image_link:
           'https://mediapool.bmwgroup.com/cache/P9/202307/P90514075/P90514075-rolls-royce-motor-cars-presents-contemporary-commissions-at-festival-of-speed-2400px.jpg',
         content_link: 'adab7e00-78f4-4279-8cb7-f124d3bf598f.md',
-        status_id: 1,
-        lifetime: null,
+        status_id: 2,
+        lifetime: '2024-04-23',
         scheduled_on: null,
-        published_date_time: null,
+        published_date_time: new Date(),
         created_date_time: new Date(),
+        updated_date_time: new Date(),
         archived_date_time: null,
       },
       {
@@ -43,11 +44,12 @@ pool
         cover_image_link:
           'https://www.bmw.in/content/dam/bmw/marketIN/bmw_in/teaserimages/joyfest/joyfest_page_1680x756.jpg/jcr:content/renditions/cq5dam.resized.img.1680.large.time1648640384362.jpg',
         content_link: '74fc4079-5daa-4acd-9750-7b507e4d01b0.md',
-        status_id: 1,
-        lifetime: null,
-        scheduled_on: null,
+        status_id: 5,
+        lifetime: '2024-04-23',
+        scheduled_on: '2024-04-24',
         published_date_time: null,
         created_date_time: new Date(),
+        updated_date_time: new Date(),
         archived_date_time: null,
       },
       {
@@ -58,11 +60,12 @@ pool
         cover_image_link:
           'https://img.redbull.com/images/q_auto,f_auto/redbullcom/2020/10/7/xu83cl3qa5qp84dpo1vk/mtb-himalaya-david-kumar-cross-country-marathon',
         content_link: 'ec318e73-1144-4c93-babb-cc1ccd61d9fb.md',
-        status_id: 1,
-        lifetime: null,
-        scheduled_on: null,
+        status_id: 5,
+        lifetime: '2024-04-23',
+        scheduled_on: '2024-04-24',
         published_date_time: null,
         created_date_time: new Date(),
+        updated_date_time: new Date(),
         archived_date_time: null,
       },
       {
@@ -73,11 +76,12 @@ pool
         cover_image_link:
           'https://www.rst-moto.com/img/asset/YXNzZXRzLzIwMjItYmlrZS1zaGVkLXNob3cuanBn?fm=webp&q=90&fit=crop-50-50&w=843&h=562&s=2c40f68dd78d14b2e46556492c84b785',
         content_link: 'c2da8beb-9ca4-4dc7-b8ba-7aa53d22cb8f.md',
-        status_id: 1,
-        lifetime: null,
+        status_id: 2,
+        lifetime: '2024-04-23',
         scheduled_on: null,
-        published_date_time: null,
+        published_date_time: new Date(),
         created_date_time: new Date(),
+        updated_date_time: new Date(),
         archived_date_time: null, // tags- 22, 23, 24
       },
       {
@@ -88,19 +92,20 @@ pool
         cover_image_link:
           'https://uploads.audi-mediacenter.com/system/production/media/122844/images/886f56b11452c238a9ef699011ce5205a5aa207f/A240766_web_960.jpg?1706859765',
         content_link: 'b2f3cf1f-6950-4cd1-9138-02a6f06d5b20.md',
-        status_id: 1,
-        lifetime: null,
-        scheduled_on: null,
+        status_id: 5,
+        lifetime: '2024-04-24',
+        scheduled_on: '2024-04-24',
         published_date_time: null,
         created_date_time: new Date(),
+        updated_date_time: new Date(),
         archived_date_time: null, // tags- 25, 26, 27
       },
     ];
 
     // Define the SQL query
     const insertQuery = `
-   INSERT INTO post (user_id, title, subtitle, cover_image_link, content_link, status_id, lifetime, published_date_time, archived_date_time, created_date_time)
-   VALUES (@user_id, @title, @subtitle, @cover_image_link, @content_link, @status_id, @lifetime, @published_date_time, @archived_date_time, @created_date_time)
+   INSERT INTO post (user_id, title, subtitle, cover_image_link, content_link, status_id, lifetime, scheduled_on, published_date_time, archived_date_time, created_date_time, updated_date_time)
+   VALUES (@user_id, @title, @subtitle, @cover_image_link, @content_link, @status_id, @lifetime, @scheduled_on, @published_date_time, @archived_date_time, @created_date_time, @updated_date_time)
  `;
 
     datas.forEach((postData) => {
@@ -114,9 +119,11 @@ pool
         .input('content_link', postData.content_link)
         .input('status_id', postData.status_id)
         .input('lifetime', postData.lifetime)
+        .input('scheduled_on', postData.scheduled_on)
         .input('published_date_time', postData.published_date_time)
         .input('archived_date_time', postData.archived_date_time)
         .input('created_date_time', postData.created_date_time)
+        .input('updated_date_time', postData.updated_date_time)
         .query(insertQuery)
         .then((result) => {
           console.log('Inserted successfully');
