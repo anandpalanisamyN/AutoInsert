@@ -1,2 +1,2 @@
 # AutoInsert
-Developed the code to insert data entries to the databases
+Developed the code to insert the mock datas to the databases
