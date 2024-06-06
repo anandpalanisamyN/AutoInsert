@@ -19,8 +19,8 @@ async function insertData(datas) {
     console.log('Connected to MSSQL database');
 
     const insertQuery = `
-      INSERT INTO post (user_id, title, subtitle, cover_image_link, content_link, status_id, lifetime, published_date_time, archived_date_time, created_date_time)
-      VALUES (@user_id, @title, @subtitle, @cover_image_link, @content_link, @status_id, @lifetime, @published_date_time, @archived_date_time, @created_date_time)
+      INSERT INTO post (user_id, title, subtitle, cover_image_link, content_link, status_id, lifetime, type_id, published_date_time, archived_date_time, created_date_time, start_date_time, end_date_time)
+      VALUES (@user_id, @title, @subtitle, @cover_image_link, @content_link, @status_id, @lifetime, @type_id, @published_date_time, @archived_date_time, @created_date_time, @start_date_time, @end_date_time)
     `;
 
     for (const postData of datas) {
@@ -32,9 +32,12 @@ async function insertData(datas) {
         .input('content_link', postData.content_link)
         .input('status_id', postData.status_id)
         .input('lifetime', postData.lifetime)
+        .input('type_id', postData.type_id)
         .input('published_date_time', postData.published_date_time)
         .input('archived_date_time', postData.archived_date_time)
         .input('created_date_time', postData.created_date_time)
+        .input('start_date_time', postData.start_date_time)
+        .input('end_date_time', postData.end_date_time)
         .query(insertQuery);
       console.log('Inserted successfully');
     }
@@ -57,6 +60,7 @@ const datas = [
     content_link: 'adab7e00-78f4-4279-8cb7-f124d3bf598f.md',
     status_id: 1,
     lifetime: null,
+    type_id: 1,
     scheduled_on: null,
     published_date_time: null,
     created_date_time: new Date(),
@@ -72,10 +76,13 @@ const datas = [
     content_link: '74fc4079-5daa-4acd-9750-7b507e4d01b0.md',
     status_id: 1,
     lifetime: null,
+    type_id: 2,
     scheduled_on: null,
     published_date_time: null,
     created_date_time: new Date(),
     archived_date_time: null,
+    start_date_time: "2024-05-27 06:55:03.997",
+    end_date_time: "2024-05-27 06:55:03.997"
   },
   {
     user_id: '5a60437e-7454-4524-ea17-08dc2d1bd9df',
@@ -87,6 +94,7 @@ const datas = [
     content_link: 'ec318e73-1144-4c93-babb-cc1ccd61d9fb.md',
     status_id: 1,
     lifetime: null,
+    type_id: 3,
     scheduled_on: null,
     published_date_time: null,
     created_date_time: new Date(),
@@ -102,6 +110,7 @@ const datas = [
     content_link: 'c2da8beb-9ca4-4dc7-b8ba-7aa53d22cb8f.md',
     status_id: 1,
     lifetime: null,
+    type_id: 3,
     scheduled_on: null,
     published_date_time: null,
     created_date_time: new Date(),
@@ -117,6 +126,7 @@ const datas = [
     content_link: 'b2f3cf1f-6950-4cd1-9138-02a6f06d5b20.md',
     status_id: 1,
     lifetime: null,
+    type_id: 4,
     scheduled_on: null,
     published_date_time: null,
     created_date_time: new Date(),

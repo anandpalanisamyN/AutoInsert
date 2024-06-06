@@ -1,5 +1,17 @@
 {
   "dependencies": {
-    "mssql": "^10.0.2"
-  }
+    "mssql": "^10.0.2",
+    "nodemon": "^3.1.1"
+  },
+  "name": "autoinsert",
+  "description": "Developed the code to insert the mock datas to the databases",
+  "version": "1.0.0",
+  "main": "InsertPostScript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon InsertPostScript.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
